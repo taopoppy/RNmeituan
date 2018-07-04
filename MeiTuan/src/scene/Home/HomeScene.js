@@ -21,6 +21,8 @@ export default class HomeScene extends PureComponent{
     render(){
         return <View style={styles.container}>
         <Text>HomeScene</Text>
+        <Image source={require('../../img/tabbar/tabbar_homepage.png')} style={{height:25,width:25}}/>
+        <Image source={require('../../img/tabbar/tabbar_homepage_selected.png')} style={{height:25,width:25}}/>
        </View>
     }
 }
