@@ -12,13 +12,14 @@ import {
     Text,
     Image,
     TouchableOpacity,
-    Dimensions,
 } from 'react-native';
 import {TabNavigator,TabBarBottom } from 'react-navigation';
 import color from '../../widget/color';
 import NavigationItem from '../../widget/NavigationItem';
+import * as api  from '../../api';
+import HomeMenuView from './HomeMenuView';
+import screen from '../../common/screen';
 
-const windowWidth=Dimensions.get('window').width;
 export default class HomeScene extends PureComponent{
     static navigationOptions=()=>({
         headerStyle:{backgroundColor:color.primary},
@@ -38,8 +39,7 @@ export default class HomeScene extends PureComponent{
         ),
         headerRight:(
             <NavigationItem 
-                title='定位' 
-                titleStyle={{color:'white'}} 
+                icon={require('../../img/mine/icon_navigation_item_message_white.png')}
                 onPress={()=>{}}
             />
         ),
@@ -49,6 +49,12 @@ export default class HomeScene extends PureComponent{
     }
     render(){
         return <View style={styles.container}>
+        <HomeMenuView
+            menuInfos={api.menuInfos}
+            onMenuSelected={()=>{
+                
+            }}
+        />
        </View>
     }
 }
@@ -57,11 +63,10 @@ export default class HomeScene extends PureComponent{
 const styles=StyleSheet.create({
     container:{
         flex:1,
-        backgroundColor:'#fff'
     },
     seachBar:{
         flexDirection:'row',
-        width:windowWidth*0.7,
+        width:screen.width*0.68,
         height:30,
         borderRadius:19,
         justifyContent:'center',

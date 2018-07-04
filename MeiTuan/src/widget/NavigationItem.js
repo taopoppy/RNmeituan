@@ -22,9 +22,16 @@ export default class NavigationItem extends PureComponent{
     }
     render(){
         //下面的style是个数组，如果外部没有传进来titleStyle，就用内部的
+        let titleElement=this.props.title && (
+            <Text style={[styles.title,this.props.titleStyle]}>{this.props.title}</Text>
+        )
+        let iconElement=this.props.icon && (
+            <Image source={this.props.icon} style={[styles.icon,this.props.iconStyle]}/>
+        )
         return (
             <TouchableOpacity onPress={this.props.onPress} style={styles.container}>
-                <Text style={[styles.title,this.props.titleStyle]}>{this.props.title}</Text>
+                {titleElement}
+                {iconElement}
             </TouchableOpacity>
         )
         
@@ -41,6 +48,11 @@ const styles=StyleSheet.create({
     title:{
         fontSize:15,
         color:'#333333',
+        margin:8,
+    },
+    icon:{
+        width:27,
+        height:27,
         margin:8,
     },
 })
