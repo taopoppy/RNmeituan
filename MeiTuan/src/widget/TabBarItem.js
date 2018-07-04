@@ -6,12 +6,7 @@
  */
 
 import React,{PureComponent} from 'react';
-import {
-    StyleSheet,
-    View,
-    Text,
-    Image,
-} from 'react-native';
+import {Image} from 'react-native';
 
 export default class TabBarItem extends PureComponent{
     render(){
@@ -27,10 +22,3 @@ export default class TabBarItem extends PureComponent{
         )
     }
 }
-
-const styles=StyleSheet.create({
-    container:{
-        flex:1,
-        backgroundColor:'#fff'
-    },
-})
