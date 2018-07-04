@@ -95,10 +95,11 @@
      initialRouteName:'Home',
      tabBarOptions:{
          //设置底部导航栏的UI样式  
+         showIcon:true,                            //是否显示图片
+         style:{height:58},  //整个底部导航栏的样式
          activeTintColor:color.primary,            //选中时的颜色
          inactiveTintColor:color.gray,             //未选中的颜色
-         style:{backgroundColor:color.purewhite,height:100},  //整个底部导航栏的样式
-         showIcon:true,                            //是否显示图片
+
      }
  })
 
