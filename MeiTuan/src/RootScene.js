@@ -32,59 +32,59 @@
 
  const Tab=TabNavigator({
      Home:{
-         screen:HomeScene,
-         navigationOptions:()=>({
-             tabBarLabel:'团购',
-             tabBarIcon:({focused,tintColor})=>{
+        screen: HomeScene,
+        navigationOptions: ({navigation}) => ({
+            tabBarLabel: '团购',
+            tabBarIcon: ({focused, tintColor}) => (
                 <TabBarItem
-                    focused={focused}
                     tintColor={tintColor}
+                    focused={focused}
                     normalImage={require('../src/img/tabbar/tabbar_homepage.png')}
                     selectedImage={require('../src/img/tabbar/tabbar_homepage_selected.png')}
                 />
-             }
-         })
+            )
+        })
      },
      Nearby:{
         screen:NearbyScene,
-        navigationOptions:()=>({
+        navigationOptions:({navigation})=>({
             tabBarLabel:'附近',
-            tabBarIcon:({focused,tintColor})=>{
+            tabBarIcon:({focused,tintColor})=>(
                 <TabBarItem
                     focused={focused}
                     tintColor={tintColor}
                     selectedImage={require('../src/img/tabbar/tabbar_merchant_selected.png')}
                     normalImage={require('../src/img/tabbar/tabbar_merchant.png')}
                 />
-            }
+            )
         })
      },
      Order:{
         screen:OrderScene,
         navigationOptions:()=>({
             tabBarLabel:'订单',
-            tabBarIcon:({focused,tintColor})=>{
+            tabBarIcon:({focused,tintColor})=>(
                 <TabBarItem
                     focused={focused}
                     tintColor={tintColor}
                     selectedImage={require('../src/img/tabbar/tabbar_order_selected.png')}
                     normalImage={require('../src/img/tabbar/tabbar_order.png')}
                 />
-            }
+            )
         })
      },
      Mine:{
         screen:MineScene,
         navigationOptions:()=>({
             tabBarLabel:'我的',
-            tabBarIcon:({focused,tintColor})=>{
+            tabBarIcon:({focused,tintColor})=>(
                 <TabBarItem
                     focused={focused}
                     tintColor={tintColor}
                     selectedImage={require('../src/img/tabbar/tabbar_mine_selected.png')}
                     normalImage={require('../src/img/tabbar/tabbar_mine.png')}
                 />
-            }
+            )
         })
      },
  },{
