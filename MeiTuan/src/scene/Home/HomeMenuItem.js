@@ -27,7 +27,7 @@ export default class HomeMenuItem extends PureComponent{
     render(){
         let {title,icon,onPress}=this.props;
         return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={onPress}>
             <Image source={icon} style={styles.icon}/>
             <Text style={styles.text}>{title}</Text>
         </TouchableOpacity>

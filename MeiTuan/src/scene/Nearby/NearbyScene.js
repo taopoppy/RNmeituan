@@ -21,6 +21,7 @@ export default class NearbyScene extends PureComponent{
     render(){
         return <View style={styles.container}>
         <Text>NearbyScene</Text>
+        <Text>{StyleSheet.hairlineWidth}</Text>
        </View>
     }
 }

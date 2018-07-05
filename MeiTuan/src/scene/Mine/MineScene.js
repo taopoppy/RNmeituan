@@ -12,7 +12,6 @@ import {
     Text,
     Image,
 } from 'react-native';
-import {TabNavigator,TabBarBottom } from 'react-navigation'
 
 export default class MineScene extends PureComponent{
     constructor(props){

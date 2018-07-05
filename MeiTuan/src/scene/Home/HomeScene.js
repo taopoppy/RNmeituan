@@ -13,12 +13,12 @@ import {
     Image,
     TouchableOpacity,
 } from 'react-native';
-import {TabNavigator,TabBarBottom } from 'react-navigation';
 import color from '../../widget/color';
 import NavigationItem from '../../widget/NavigationItem';
 import * as api  from '../../api';
 import HomeMenuView from './HomeMenuView';
 import screen from '../../common/screen';
+import HomeGridItem from './HomeGridItem';
 
 export default class HomeScene extends PureComponent{
     static navigationOptions=()=>({
@@ -51,10 +51,19 @@ export default class HomeScene extends PureComponent{
         return <View style={styles.container}>
         <HomeMenuView
             menuInfos={api.menuInfos}
-            onMenuSelected={()=>{
-                
+            onMenuSelected={(index)=>{
+                alert(index)
             }}
         />
+        <View style={styles.kongbai}/>
+        <View style={styles.gridContainer}>
+            <HomeGridItem/>
+            <HomeGridItem/>
+            <HomeGridItem/>
+            <HomeGridItem/>
+            <HomeGridItem/>
+            <HomeGridItem/>
+        </View>   
        </View>
     }
 }
@@ -81,5 +90,13 @@ const styles=StyleSheet.create({
     },
     seachText:{
         fontSize:14,
+    },
+    kongbai:{
+        height:14,
+        backgroundColor:color.paper
+    },
+    gridContainer:{
+        flexDirection:'row',
+        flexWrap:'wrap',
     },
 })
