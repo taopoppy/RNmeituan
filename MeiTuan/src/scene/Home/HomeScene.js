@@ -18,7 +18,8 @@ import NavigationItem from '../../widget/NavigationItem';
 import * as api  from '../../api';
 import HomeMenuView from './HomeMenuView';
 import screen from '../../common/screen';
-import HomeGridItem from './HomeGridItem';
+import HomeGirdView from './HomeGirdView';
+import SpacingView from '../../widget/SpacingView';
 
 export default class HomeScene extends PureComponent{
     static navigationOptions=()=>({
@@ -46,6 +47,24 @@ export default class HomeScene extends PureComponent{
     })
     constructor(props){
         super(props)
+        this.state={
+            discount:[],                             //打折对象
+        }
+    }
+    componentDidMount(){
+        this.requestData();
+    }
+    requestData=async()=>{
+        try {
+            //这里的api.discount貌似已经失效
+            let response=await fetch(api.discount)    //这里是异步的写法，首先fetch返回的是promise对象，现在使用await就是直接返回的网络请求结果
+            let json=await response.json()            //将请求的结果形成json对象，json格式化
+            this.setState({
+                discount:json.data
+            })
+        } catch (error) {
+            alert('error'+error)
+        }
     }
     render(){
         return <View style={styles.container}>
@@ -54,16 +73,10 @@ export default class HomeScene extends PureComponent{
             onMenuSelected={(index)=>{
                 alert(index)
             }}
-        />
-        <View style={styles.kongbai}/>
-        <View style={styles.gridContainer}>
-            <HomeGridItem/>
-            <HomeGridItem/>
-            <HomeGridItem/>
-            <HomeGridItem/>
-            <HomeGridItem/>
-            <HomeGridItem/>
-        </View>   
+        /> 
+        <SpacingView />
+        <HomeGirdView infos={this.state.discount}/>
+        <SpacingView />
        </View>
     }
 }
@@ -90,13 +103,5 @@ const styles=StyleSheet.create({
     },
     seachText:{
         fontSize:14,
-    },
-    kongbai:{
-        height:14,
-        backgroundColor:color.paper
-    },
-    gridContainer:{
-        flexDirection:'row',
-        flexWrap:'wrap',
     },
 })

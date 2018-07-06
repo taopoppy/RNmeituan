@@ -14,19 +14,26 @@ import {
     TouchableOpacity,
 } from 'react-native';
 import screen from '../../common/screen';
+import color from '../../widget/color';
+import {Heading2,Heading3} from '../../widget/Text';
 
 export default class HomeGridItem extends PureComponent{
     constructor(props){
         super(props)
     }
     render(){
+        // let {info}=this.props;
+        // let title=info.maintitle;
+        // let color =info.typeface_color;
+        // let subtitle=info.deputytitle;
+        // let imageUrl=info.imageurl.replace('w.h','120.0');
         return (
             <TouchableOpacity style={styles.container}>
                 <View>
-                    <Text style={styles.titleText}>吃吃喝喝</Text>
-                    <Text style={styles.text}>年底聚会</Text>
+                    <Heading2 style={[styles.titleText,{color:color}]}>{title}</Heading2>
+                    <Heading3 >{subtitle}</Heading3>
                 </View>
-                <Image style={styles.icon}/>
+                <Image style={styles.icon} source={{uri:imageUrl}}/>
             </TouchableOpacity>
         )
     }
@@ -40,15 +47,12 @@ const styles=StyleSheet.create({
         alignItems:'center',
         width:screen.width/2-StyleSheet.hairlineWidth,
         height:screen.width/4,
+        borderBottomWidth:StyleSheet.hairlineWidth,
+        borderRightWidth:StyleSheet.hairlineWidth,
+        borderColor:color.border,
     },
     titleText:{
-        fontSize:15,
         marginBottom:10,
-        color:'red'
-    },
-    text:{
-        fontSize:15,
-        color:'#333333'
     },
     icon:{
         width:screen.width/5,
