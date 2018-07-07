@@ -19,12 +19,15 @@ export default class HomeGirdView extends PureComponent{
         super(props)
     }
     render(){
-        let {infos}=this.props;
+        let {infos,onGirdSelected}=this.props;
         return <View style={styles.gridContainer}>
             {infos.map((info,index)=>{
                 <HomeGridItem
                     key={index}
                     info={info}
+                    onPress={()=>{
+                        onGirdSelected(index)
+                    }}
                 />
             })}
         </View> 

@@ -22,13 +22,13 @@ export default class HomeGridItem extends PureComponent{
         super(props)
     }
     render(){
-        // let {info}=this.props;
-        // let title=info.maintitle;
-        // let color =info.typeface_color;
-        // let subtitle=info.deputytitle;
-        // let imageUrl=info.imageurl.replace('w.h','120.0');
+        let {info,onPress}=this.props;
+        let title=info.maintitle;
+        let color =info.typeface_color;
+        let subtitle=info.deputytitle;
+        let imageUrl=info.imageurl.replace('w.h','120.0');
         return (
-            <TouchableOpacity style={styles.container}>
+            <TouchableOpacity style={styles.container} onPress={onPress}>
                 <View>
                     <Heading2 style={[styles.titleText,{color:color}]}>{title}</Heading2>
                     <Heading3 >{subtitle}</Heading3>

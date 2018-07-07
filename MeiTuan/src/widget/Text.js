@@ -24,7 +24,7 @@ export function Heading2({style,...props}){
 export function Heading3({style,...props}){             
     return <Text style={[styles.h3,style]} {...props}/>
 }
-export function Heading4({style,...props}){             
+export function Paragraph({style,...props}){             
     return <Text style={[styles.h4,style]} {...props}/>
 }
 
