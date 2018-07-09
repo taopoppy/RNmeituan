@@ -125,9 +125,13 @@ export default class HomeScene extends PureComponent{
             </View>
         )
     }
+    onCellSelected=(info)=>{
+        //alert(JSON.stringify(info))
+        this.props.navigation.navigate('GroupPurchaseScene',{info:info})
+    }
     renderItem=({item})=>{
         return (
-            <GroupPurchaseCell info={item}/>
+            <GroupPurchaseCell info={item} onPress={this.onCellSelected}/>
         )
     }
     render(){

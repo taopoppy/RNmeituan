@@ -21,10 +21,10 @@ export default class GroupPurchaseCell extends PureComponent{
         super(props)
     }
     render(){
-        let {info}=this.props;
+        let {info,onPress}=this.props;
         let imageUrl=info.imageUrl.replace('w.h','160.0')    //从网络上获取的数据字符串w.h的，要换成具体的宽度
         return (
-            <TouchableOpacity style={styles.container}>
+            <TouchableOpacity style={styles.container} onPress={()=>{onPress(info)}}>
                 <Image style={styles.icon} source={{uri:imageUrl}}/>
                 <View style={styles.rightContainer}>
                     <Heading2>{info.title}</Heading2>
@@ -64,4 +64,14 @@ const styles=StyleSheet.create({
 })
 
 
-//numberOfLines={0}表示不限制显示的行数
+//(1)numberOfLines={0}表示不限制显示的行数
+
+//(2)带参数的回调函数方法1
+//onPress={()=>{this.props.onPress(info)}}
+//onPress={this.onCellSelected}
+//onCellSelected=(info)=>{}
+
+//(3)带参数的回调方法2
+//onPress={(info)=>{this.props.onPress(info)}}
+//onPress={(info)=>{this.onCellSelected(info)}}
+//onCellSelected(info){}

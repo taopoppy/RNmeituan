@@ -19,6 +19,7 @@
  import TabBarItem from '../src/widget/TabBarItem';
  import color from '../src/widget/color';
  import WebScene from './Web/WebScene';
+ import GroupPurchaseScene from './GroupPurchase/GroupPurchaseScene';
 
 
  export default class RootScene extends PureComponent{
@@ -106,9 +107,10 @@
  const Navigator=StackNavigator({
      Tab:{screen:Tab},
      WebScene:{screen:WebScene},
+     GroupPurchaseScene:{screen:GroupPurchaseScene},
  },{
      navigationOptions:{
-         headerTintColor:'red',                    //顶部导航条标题的颜色
+         headerTintColor:'#333333',                    //顶部导航条标题的颜色
          headerBackTitle:null,                     //返回键旁边的文字    
          showIcon:true,  
          swipeEnabled:false,  
