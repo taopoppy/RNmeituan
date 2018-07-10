@@ -157,7 +157,7 @@ function getCurrentRouteName(navigationState){
      tabBarPosition:'bottom',                      //ios默认导航就在底部，但是android是在顶部，所以我们要设置在底部
      lazy:true,                                    //app在启动的时候是否要将四个页面都创建出来
      animationEnabled:false,                       //切换底部导航是否需要动画，ios默认是true，android默认false
-     swipeEnabled:false,                           //是否支持水平横向的滑动
+     swipeEnabled:true,                           //是否支持水平横向的滑动
      initialRouteName:'Home',
      tabBarOptions:{
          //设置底部导航栏的UI样式 
