@@ -10,6 +10,10 @@
      View,
      Text,
      Image,
+     StatusBar,
+     BackHandler,
+     Platform,
+     ToastAndroid,
  } from 'react-native';
  import {TabNavigator,TabBarBottom,StackNavigator} from 'react-navigation';
  import HomeScene from '../src/scene/Home/HomeScene';
@@ -20,14 +24,74 @@
  import color from '../src/widget/color';
  import WebScene from './Web/WebScene';
  import GroupPurchaseScene from './GroupPurchase/GroupPurchaseScene';
+ import SplashView from '../src/scene/Lauch/SplashView';
 
-
+ const lightContentScenes = ['Home', 'Mine'];
+function getCurrentRouteName(navigationState){
+    if(!navigationState){
+        return null
+    }
+    const route=navigationState.routes[navigationState.index]
+    if(route.routes){
+        return getCurrentRouteName(route)
+    }
+    return route.routeName
+}
  export default class RootScene extends PureComponent{
      constructor(props){
          super(props)
      }
+     componentDidMount(){
+         if(Platform.OS==='android'){
+             this.listener=BackHandler.addEventListener('hardwareBackPress',this.onBackAndroid)
+         }
+     }
+     componentWillUnmount(){
+         if(Platform.OS==='android'){
+             this.listener.remove('hardwareBackPress')
+         }
+     }
+     onBackAndroid=()=>{
+        let routes = this.navigator.state.nav.routes;
+        let routeName = routes[routes.length-1].routeName;
+        if(routeName=="Tab"){
+            // if (this.lastBackPressed && this.lastBackPressed + 2000 >= Date.now()) {
+            //     return false;
+            // }else{
+            //     lastBackPressed = Date.now();
+            //     ToastAndroid.show('再按一次退出应用', ToastAndroid.SHORT);
+            //     return true;
+            // }
+            let now = new Date().getTime(); 
+            if(now - this.lastBackPressed < 2500) { 
+                BackHandler.exitApp();
+                //return false;
+            } else{
+                this.lastBackPressed = now; 
+                ToastAndroid.show('再点击一次退出应用',ToastAndroid.SHORT); 
+                return true; 
+            }
+           
+                        
+        }
+     }
      render(){
-         return <Navigator/>
+         return <Navigator
+            ref={navigator=>this.navigator=navigator}
+            onNavigationStateChange={
+                (prevState,currentState)=>{
+                    const currentScene=getCurrentRouteName(currentState)
+                    const previousScene=getCurrentRouteName(prevState)
+                    if(previousScene!==currentScene){
+                        if(lightContentScenes.indexOf(currentScene)>=0){
+                            StatusBar.setBarStyle('light-content')
+                        }else(
+                            StatusBar.setBarStyle('dark-content')
+                        )
+                    }
+                }
+            }
+         />
      }
  }
 
@@ -105,6 +169,7 @@
  })
 
  const Navigator=StackNavigator({
+    SplashView:{screen:SplashView},
      Tab:{screen:Tab},
      WebScene:{screen:WebScene},
      GroupPurchaseScene:{screen:GroupPurchaseScene},

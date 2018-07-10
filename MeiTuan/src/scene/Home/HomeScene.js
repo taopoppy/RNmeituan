@@ -13,6 +13,7 @@ import {
     Image,
     TouchableOpacity,
     FlatList,
+    Alert,
 } from 'react-native';
 import color from '../../widget/color';
 import NavigationItem from '../../widget/NavigationItem';
