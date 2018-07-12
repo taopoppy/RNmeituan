@@ -24,6 +24,9 @@ export function Heading2({style,...props}){
 export function Heading3({style,...props}){             
     return <Text style={[styles.h3,style]} {...props}/>
 }
+export function Heading4({style,...props}){
+    return <Text style={[styles.h5,style]} {...props}/>
+}
 export function Paragraph({style,...props}){             
     return <Text style={[styles.h4,style]} {...props}/>
 }
@@ -48,6 +51,10 @@ const styles=StyleSheet.create({
     },
     h4:{
         fontSize:13,
+        color:'#777777',
+    },
+    h5:{
+        fontSize:10,
         color:'#777777',
     },
 })

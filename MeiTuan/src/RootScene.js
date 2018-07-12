@@ -25,6 +25,7 @@
  import WebScene from './Web/WebScene';
  import GroupPurchaseScene from './GroupPurchase/GroupPurchaseScene';
  import SplashView from '../src/scene/Lauch/SplashView';
+ import LoginView from '../src/scene/Lauch/LoginView';
 
  const lightContentScenes = ['Home', 'Mine'];
 function getCurrentRouteName(navigationState){
@@ -54,7 +55,7 @@ function getCurrentRouteName(navigationState){
      onBackAndroid=()=>{
         let routes = this.navigator.state.nav.routes;
         let routeName = routes[routes.length-1].routeName;
-        if(routeName=="Tab"){
+        if(routeName=="Tab"||routeName=='LoginView'){
             // if (this.lastBackPressed && this.lastBackPressed + 2000 >= Date.now()) {
             //     return false;
             // }else{
@@ -169,7 +170,8 @@ function getCurrentRouteName(navigationState){
  })
 
  const Navigator=StackNavigator({
-    SplashView:{screen:SplashView},
+     SplashView:{screen:SplashView},
+     LoginView:{screen:LoginView},
      Tab:{screen:Tab},
      WebScene:{screen:WebScene},
      GroupPurchaseScene:{screen:GroupPurchaseScene},

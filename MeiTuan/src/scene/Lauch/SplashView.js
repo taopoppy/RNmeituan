@@ -24,7 +24,7 @@ export default class SplashView extends PureComponent{
     }
     componentDidMount(){
         setTimeout(()=>{
-            this.props.navigation.navigate('Tab')
+            this.props.navigation.navigate('LoginView')
         },3000)
     }
     render(){
