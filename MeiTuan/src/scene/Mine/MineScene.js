@@ -20,7 +20,9 @@ import {Heading2,Paragraph} from '../../widget/Text';
 import SpacingView from '../../widget/SpacingView';
 import DetailCell from '../../widget/DetailCell';
 import screen from '../../common/screen';
+import {getHeaderImage,} from './MineInformation';
 
+const defaultImge=require('../../img/mine/avatar.png');
 export default class MineScene extends PureComponent{
     static navigationOptions=({navigation})=>({
         headerRight:(
@@ -46,7 +48,20 @@ export default class MineScene extends PureComponent{
         super(props)
         this.state={
             isRefreshing:false,
+            userHeaderImage:defaultImge,
         }
+    }
+    getUserInformation(){
+        getHeaderImage().then((data)=>{
+            if(data!==null&&data!==''){
+                this.setState({
+                    userHeaderImage:data,
+                })
+            }
+        })
+    }
+    componentDidMount(){
+        //this.getUserInformation();
     }
     onHeaderRefresh(){
         this.setState({
@@ -59,7 +74,7 @@ export default class MineScene extends PureComponent{
     }
     renderHeader(){
         return<View style={styles.header}>
-            <Image source={require('../../img/mine/avatar.png')} style={styles.avator}/>
+            <Image source={this.state.userHeaderImage} style={styles.avator}/>
             <View>
                 <View style={styles.avatorName}>
                     <Heading2 style={styles.userName}>taopoppy</Heading2>
